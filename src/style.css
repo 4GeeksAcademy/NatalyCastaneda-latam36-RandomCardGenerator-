@@ -1,1 +1,50 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
+body {
+  background: rgba(15, 126, 19, 255);
+  min-height: 100vh;
+}
+.card {
+  display: inline-block;
+  background: white;
+  margin: auto;
+  height: 400px;
+  width: 300px;
+  border-radius: 20px;
+}
+
+#masterContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.upperStick {
+  display: flex;
+  height: 82px;
+  align-content: center;
+  flex-wrap: wrap;
+}
+#topStick {
+  font-size: 90px;
+  padding-left: 13px;
+}
+#numbersLiterals {
+  font-size: 180px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 235px;
+}
+.downStick {
+  display: flex;
+  height: 82px;
+  align-content: center;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+#bottomStick {
+  font-size: 90px;
+  padding-right: 13px;
+  padding-bottom: 25px;
+}
