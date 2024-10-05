@@ -14,7 +14,7 @@
   </head>
   <body>
     <div id="masterContainer" class="container-fluid">
-      <div class="card">
+      <div id="card">
         <div class="upperStick">
           <span id="topStick"></span>
         </div>
@@ -24,6 +24,20 @@
         <div class="downStick">
           <span id="bottomStick"></span>
         </div>
+      </div>
+        <div id="replicate">
+          <button id="clickMe" onclick="newCard" >Pick me!</button>
+        </div>
+        <div id="containerWidth"> 
+          <label for="WidthInput">Enter Width (1-100): </label><br>
+          <input type="text" id="WidthInput" value="50" maxlength="3" pattern="\d*">
+      </div>
+      <div id="containerHeight"> 
+        <label for="heightinput">Enter Height (1-100): </label><br>
+        <input type="text" id="HeightInput" value="50" maxlength="3" pattern="\d*">
+    
+    <button id="resizeCardBtn" onclick="resizeCard">Change size</button>
     </div>
+    
   </body>
 </html>
