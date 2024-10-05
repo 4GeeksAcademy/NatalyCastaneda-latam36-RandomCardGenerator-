@@ -18,26 +18,41 @@
         <div class="upperStick">
           <span id="topStick"></span>
         </div>
-        <div class="range">        
+        <div class="range">
           <span id="numbersLiterals"></span>
         </div>
         <div class="downStick">
           <span id="bottomStick"></span>
         </div>
       </div>
+      <div id="containerProperties">
         <div id="replicate">
-          <button id="clickMe" onclick="newCard" >Pick me!</button>
+          <button id="clickMe" onclick="newCard">Pick me!</button>
         </div>
-        <div id="containerWidth"> 
-          <label for="WidthInput">Enter Width (1-100): </label><br>
-          <input type="text" id="WidthInput" value="50" maxlength="3" pattern="\d*">
+        <div id="containerSizes">
+          <div id="containerWidth">
+            <label for="WidthInput">Enter Width: </label><br />
+            <input
+              type="text"
+              id="widthInput"
+              value="300"
+              maxlength="3"
+              pattern="\d*"
+            />
+          </div>
+          <div id="containerHeight">
+            <label for="heightinput">Enter Height: </label><br />
+            <input
+              type="text"
+              id="heightInput"
+              value="400"
+              maxlength="3"
+              pattern="\d*"
+            />
+          </div>
+          <button id="resizeButton">Change size</button>
+        </div>
       </div>
-      <div id="containerHeight"> 
-        <label for="heightinput">Enter Height (1-100): </label><br>
-        <input type="text" id="HeightInput" value="50" maxlength="3" pattern="\d*">
-    
-    <button id="resizeCardBtn" onclick="resizeCard">Change size</button>
     </div>
-    
   </body>
 </html>

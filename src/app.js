@@ -45,23 +45,37 @@ window.onload = function() {
   newCard();
 
   setInterval(newCard, 10000);
+};
+function adjustFontSizes(newWidth, newHeight) {
+  const baseWidth = 250;
+  const baseHeight = 250;
+  const topStickBaseSize = 50;
+  const numbersLiteralsBaseSize = 100;
+  const bottomStickBaseSize = 50;
 
-  function resizeCard() {
-    document.getElementById("card").style.width =
-      document.getElementById("WidthInput").value + "px";
-    document.getElementById("card").style.height =
-      document.getElementById("HeightInput").value + "px";
-  }
-  document
-    .querySelector("#resizeCardBtn")
-    .addEventListener("click", resizeCard);
-  function adjustFontSize(container, desiredWidth) {
-    var fontSize = parseInt(
-      window.getComputedStyle(container, null).getPropertyValue("font-size")
-    );
-    while (container.scrollWidth > desiredWidth && fontSize > 0) {
-      fontSize--;
-      container.style.fontSize = fontSize + "px";
-    }
-  }
+  const widthRatio = newWidth / baseWidth;
+  const heightRatio = newHeight / baseHeight;
+  const sizeFactor = (widthRatio + heightRatio) / 2;
+
+  const newTopStickFontSize = topStickBaseSize * sizeFactor;
+  const newNumbersLiteralsFontSize = numbersLiteralsBaseSize * sizeFactor;
+  const newBottomStickFontSize = bottomStickBaseSize * sizeFactor;
+
+  document.getElementById("topStick").style.fontSize =
+    newTopStickFontSize + "px";
+  document.getElementById("numbersLiterals").style.fontSize =
+    newNumbersLiteralsFontSize + "px";
+  document.getElementById("bottomStick").style.fontSize =
+    newBottomStickFontSize + "px";
+}
+
+document.getElementById("resizeButton").onclick = function() {
+  const card = document.getElementById("card");
+  const newWidth = parseInt(document.getElementById("widthInput").value);
+  const newHeight = parseInt(document.getElementById("heightInput").value);
+
+  card.style.width = newWidth + "px";
+  card.style.height = newHeight + "px";
+
+  adjustFontSizes(newWidth, newHeight);
 };
