@@ -7,8 +7,153 @@ import "./assets/img/4geeks.ico";
 
 window.onload = function() {
   //   //write your code here
-  let sticks = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
-  let values = [
+  const style = document.createElement("style");
+  style.innerHTML = `
+    body {
+      background: rgba(15, 126, 19, 255);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      margin: auto;
+      height: 400px;
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .upperStick, .downStick {
+      display: flex;
+      height: 20%;
+      align-items: center;
+      padding: 10px;
+    }
+
+    #topStick, #bottomStick {
+      font-size: 90px;
+    }
+
+    #numbersLiterals {
+      font-size: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 60%;
+      width: 100%;
+    }
+
+    #containerProperties {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: lightgray;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const masterContainer = document.createElement("div");
+  masterContainer.id = "masterContainer";
+  masterContainer.classList.add("container-fluid");
+  document.body.appendChild(masterContainer);
+
+  const card = document.createElement("div");
+  card.id = "card";
+  masterContainer.appendChild(card);
+
+  const upperStick = document.createElement("div");
+  upperStick.classList.add("upperStick");
+  card.appendChild(upperStick);
+
+  const topStick = document.createElement("span");
+  topStick.id = "topStick";
+  upperStick.appendChild(topStick);
+
+  const range = document.createElement("div");
+  range.classList.add("range");
+  card.appendChild(range);
+
+  const numbersLiterals = document.createElement("span");
+  numbersLiterals.id = "numbersLiterals";
+  range.appendChild(numbersLiterals);
+
+  const downStick = document.createElement("div");
+  downStick.classList.add("downStick");
+  card.appendChild(downStick);
+
+  const bottomStick = document.createElement("span");
+  bottomStick.id = "bottomStick";
+  downStick.appendChild(bottomStick);
+
+  const containerProperties = document.createElement("div");
+  containerProperties.id = "containerProperties";
+  masterContainer.appendChild(containerProperties);
+
+  const replicate = document.createElement("div");
+  replicate.id = "replicate";
+  containerProperties.appendChild(replicate);
+
+  const clickMeButton = document.createElement("button");
+  clickMeButton.id = "clickMe";
+  clickMeButton.innerText = "Pick me!";
+  replicate.appendChild(clickMeButton);
+
+  const containerSizes = document.createElement("div");
+  containerSizes.id = "containerSizes";
+  containerProperties.appendChild(containerSizes);
+
+  const containerWidth = document.createElement("div");
+  containerWidth.id = "containerWidth";
+  containerSizes.appendChild(containerWidth);
+
+  const widthLabel = document.createElement("label");
+  widthLabel.setAttribute("for", "widthInput");
+  widthLabel.innerText = "Enter Width: ";
+  containerWidth.appendChild(widthLabel);
+
+  const widthInput = document.createElement("input");
+  widthInput.type = "text";
+  widthInput.id = "widthInput";
+  widthInput.value = "300";
+  containerWidth.appendChild(widthInput);
+
+  const containerHeight = document.createElement("div");
+  containerHeight.id = "containerHeight";
+  containerSizes.appendChild(containerHeight);
+
+  const heightLabel = document.createElement("label");
+  heightLabel.setAttribute("for", "heightInput");
+  heightLabel.innerText = "Enter Height: ";
+  containerHeight.appendChild(heightLabel);
+
+  const heightInput = document.createElement("input");
+  heightInput.type = "text";
+  heightInput.id = "heightInput";
+  heightInput.value = "400";
+  containerHeight.appendChild(heightInput);
+
+  const resizeButton = document.createElement("button");
+  resizeButton.id = "resizeButton";
+  resizeButton.innerText = "Change size";
+  containerSizes.appendChild(resizeButton);
+
+  const sticks = ["&spades;", "&clubs;", "&hearts;", "&diams;"];
+  const values = [
     "A",
     "2",
     "3",
@@ -21,61 +166,36 @@ window.onload = function() {
     "10",
     "J",
     "Q",
-    "K"
+    "K",
   ];
+
   function newCard() {
     let randomStick = sticks[Math.floor(Math.random() * sticks.length)];
     let randomValue = values[Math.floor(Math.random() * values.length)];
-    document.querySelector("#topStick").innerHTML = randomStick;
-    document.querySelector("#numbersLiterals").innerHTML = randomValue;
-    document.querySelector("#bottomStick").innerHTML = randomStick;
+    topStick.innerHTML = randomStick;
+    numbersLiterals.innerHTML = randomValue;
+    bottomStick.innerHTML = randomStick;
 
     if (randomStick === "&hearts;" || randomStick === "&diams;") {
-      document.querySelector("#topStick").style.color = "red";
-      document.querySelector("#numbersLiterals").style.color = "red";
-      document.querySelector("#bottomStick").style.color = "red";
+      topStick.style.color = "red";
+      numbersLiterals.style.color = "red";
+      bottomStick.style.color = "red";
     } else {
-      document.querySelector("#topStick").style.color = "black";
-      document.querySelector("#numbersLiterals").style.color = "black";
-      document.querySelector("#bottomStick").style.color = "black";
+      topStick.style.color = "black";
+      numbersLiterals.style.color = "black";
+      bottomStick.style.color = "black";
     }
   }
-  document.querySelector("#clickMe").addEventListener("click", newCard);
+
+  clickMeButton.addEventListener("click", newCard);
 
   newCard();
 
-  setInterval(newCard, 10000);
-};
-function adjustFontSizes(newWidth, newHeight) {
-  const baseWidth = 250;
-  const baseHeight = 250;
-  const topStickBaseSize = 50;
-  const numbersLiteralsBaseSize = 100;
-  const bottomStickBaseSize = 50;
+  resizeButton.addEventListener("click", function() {
+    const newWidth = parseInt(widthInput.value);
+    const newHeight = parseInt(heightInput.value);
 
-  const widthRatio = newWidth / baseWidth;
-  const heightRatio = newHeight / baseHeight;
-  const sizeFactor = (widthRatio + heightRatio) / 2;
-
-  const newTopStickFontSize = topStickBaseSize * sizeFactor;
-  const newNumbersLiteralsFontSize = numbersLiteralsBaseSize * sizeFactor;
-  const newBottomStickFontSize = bottomStickBaseSize * sizeFactor;
-
-  document.getElementById("topStick").style.fontSize =
-    newTopStickFontSize + "px";
-  document.getElementById("numbersLiterals").style.fontSize =
-    newNumbersLiteralsFontSize + "px";
-  document.getElementById("bottomStick").style.fontSize =
-    newBottomStickFontSize + "px";
-}
-
-document.getElementById("resizeButton").onclick = function() {
-  const card = document.getElementById("card");
-  const newWidth = parseInt(document.getElementById("widthInput").value);
-  const newHeight = parseInt(document.getElementById("heightInput").value);
-
-  card.style.width = newWidth + "px";
-  card.style.height = newHeight + "px";
-
-  adjustFontSizes(newWidth, newHeight);
+    card.style.width = newWidth + "px";
+    card.style.height = newHeight + "px";
+  });
 };
