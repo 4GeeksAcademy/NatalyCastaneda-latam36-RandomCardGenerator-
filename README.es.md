@@ -1,3 +1,8 @@
+# Comentarios de autor
+En este proyecto con finalidad educativa se trabajaron con dos ramas __main__ y __dom-alternative__ las cuales cuentan con la misma funcionalidad.
+
+El punto de comparacion de estas es en como fueron desarrolladas. En la rama __main__ se hace uso de tres archivos para la creacion de la pagina `./src/app.js`, `./src/style.css` y `./src/index.html`. Por el contrario en la rama __dom-alternative__ se hace uso de la interface DOM para la incorporacion del html y el css desde codigo Javascript.
+
 # Hola Mundo con Vanilla JS
 
 Empieza a programar un sitio web JS/HTML/CSS en 30 segundos abriendo esta plantilla con nuestro puente de [One-Click Coding](https://s.4geeks.com/start?repo=https://github.com/4GeeksAcademy/vanillajs-hello) o localmente en tu computador.
