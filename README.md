@@ -1,3 +1,8 @@
+# Author's comments
+In this project with educational purpose we worked with two branches __main__ and __dom-alternative__ which have the same functionality.
+
+The point of comparison between them is how they were developed. The __main__ branch makes use of three files for the creation of the page `./src/app.js`, `./src/style.css` and `./src/index.html`. On the other hand, the __dom-alternative__ branch makes use of the DOM interface for the incorporation of the html and css from Javascript code.
+
 # Hello World with Vanilla JS
 
 > 🇪🇸 [Spanish version of this readme is available](./README.es.md).
